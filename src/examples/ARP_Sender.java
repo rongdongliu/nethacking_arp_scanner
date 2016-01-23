@@ -11,12 +11,12 @@ public class ARP_Sender implements Runnable {
         NET_Interface firstIface = new NET_Interface(0);
 
         String iface = firstIface.getName();
-        System.out.println(iface);
+        //System.out.println(iface);
         String sourceIp = Convert.dec2hex(firstIface.getIp());
         //String tmpIP = getSourceIp();
-        System.out.println(firstIface.getIp());
+        //System.out.println(firstIface.getIp());
         String ipPrefix = firstIface.getIpPrefix();
-        System.out.println(ipPrefix);
+        //System.out.println(ipPrefix);
         //String ipPrefix = "192.168.1.";
 
         String sourceMac = Convert.bytes2hex(Pcap.get(iface).getLinkLayerAddresses().get(0).getAddress());
