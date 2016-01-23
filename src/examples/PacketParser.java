@@ -61,7 +61,10 @@ public class PacketParser {
     public String getSourceIP(){
         String ip = "";
         for (int i = 28; i < 32; i++){
-            ip += Byte.toUnsignedInt(packet[i]) + ".";
+            ip += Byte.toUnsignedInt(packet[i]);
+            if (i < 31){
+                ip += ".";
+            }
         }
         return ip;
     }
