@@ -13,7 +13,6 @@ public class PacketParser {
         byte[] mac = new byte[6];
         for (int i = 0; i < 6; i++){
             mac[i] = packet[i];
-            //System.out.println((int)mac[i]);
         }
         return toHexadecimal(mac);
     }
@@ -24,7 +23,6 @@ public class PacketParser {
         for (int i = 6; i < 12; i++){
             mac[j] = packet[i];
             j++;
-            //System.out.println((int)mac[i]);
         }
 
         return toHexadecimal(mac);
@@ -45,7 +43,6 @@ public class PacketParser {
         for (int i = 6; i < 9; i++){
             mac[j] = packet[i];
             j++;
-            //System.out.println((int)mac[i]);
         }
 
         return toHexadecimal(mac);

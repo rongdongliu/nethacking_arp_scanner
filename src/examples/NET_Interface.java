@@ -23,22 +23,19 @@ public class NET_Interface {
 
     public String getName() {
         List<PcapNetworkInterface> devices = Pcap.interfaces();
-        return devices.get(0).getName();
+        return devices.get(ifaceNumber).getName();
     }
 
     public String getIp() {
         List<PcapNetworkInterface>devices = Pcap.interfaces();
-        List<PcapAddress> adresses = devices.get(0).getAddresses();
+        List<PcapAddress> adresses = devices.get(ifaceNumber).getAddresses();
         String ip = "";
         for (PcapAddress adr: adresses){
-//            String tmp = adr.getBroadcastAddress().toString();
-//            System.out.println(tmp);
             if (adr.getNetmask() != null){
                 ip = adr.getAddress().toString().substring(1);
                 break;
             }
         }
-        //System.out.println(adresses.get(0));
         return ip;
     }
 

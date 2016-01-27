@@ -7,18 +7,16 @@ import pcap.Pcap;
  * Created by SV on 18.01.2016.
  */
 public class ARP_Sender implements Runnable {
+    private int id;
+    ARP_Sender(int ifaceId){
+        id = ifaceId;
+    }
     public void  run(){
-        NET_Interface firstIface = new NET_Interface(0);
+        NET_Interface firstIface = new NET_Interface(id);
 
         String iface = firstIface.getName();
-        //System.out.println(iface);
         String sourceIp = Convert.dec2hex(firstIface.getIp());
-        //String tmpIP = getSourceIp();
-        //System.out.println(firstIface.getIp());
         String ipPrefix = firstIface.getIpPrefix();
-        //System.out.println(ipPrefix);
-        //String ipPrefix = "192.168.1.";
-
         String sourceMac = Convert.bytes2hex(Pcap.get(iface).getLinkLayerAddresses().get(0).getAddress());
         String targetMac = "ff:ff:ff ff:ff:ff";
         while (true) {
@@ -40,15 +38,9 @@ public class ARP_Sender implements Runnable {
                         targetIp                   // Target IP address:  4 bytes
                 );
 
-                //System.out.println("Sending [" + Convert.bytes2hex(packet) + "]...");
-
                 Pcap.send(iface, packet);
-
             }
         }
     }
 
-    public void  finish(){
-
-    }
 }

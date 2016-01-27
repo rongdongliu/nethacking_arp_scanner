@@ -10,7 +10,7 @@ import java.util.Map;
  * Created by SV on 23.01.2016.
  */
 public class Vendor_Base {
-    Map<String, String> map = new HashMap<String, String>();
+    Map<String, String> base = new HashMap<String, String>();
 
     Vendor_Base(){
         try (BufferedReader br = new BufferedReader(new FileReader("oui.txt"))) {
@@ -20,7 +20,7 @@ public class Vendor_Base {
                 if(line.indexOf("base 16") != -1){
                     String key = line.substring(0,6);
                     String nameCompany = line.substring(22);
-                    map.put(key, nameCompany);
+                    base.put(key, nameCompany);
                 }
             }
         } catch (IOException ex) {
@@ -30,9 +30,9 @@ public class Vendor_Base {
     }
 
     public String getVendorName(String vendorId){
-        if (map.get(vendorId) == null){
+        if (base.get(vendorId) == null){
             return  "Unknown vendor";
         }
-        return map.get(vendorId);
+        return base.get(vendorId);
     }
 }
